@@ -43,7 +43,10 @@
     if (!completion.options.hint) return;
 
     CodeMirror.signal(this, "startCompletion", this);
-    completion.update(true);
+    var first = true;
+    if (options.firstOverride !== undefined)
+      first = options.firstOverride;
+    completion.update(first);
   });
 
   function Completion(cm, options) {
